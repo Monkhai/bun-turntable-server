@@ -4,12 +4,16 @@ const TURNTABLE_SERVER_ADDRESS = 'http://localhost:9000';
 export const handleTimeline = async (req: Request): Promise<Response> => {
   try {
     const body = await req.json();
+
+    console.log('body', body);
     
-    const response = await fetch(`${TURNTABLE_SERVER_ADDRESS}/timeline`, {
+    const response = await fetch(`${TURNTABLE_SERVER_ADDRESS}/api/TurntableTimeline`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     });
+
+    console.log('response', response);
 
     if (!response.ok) {
       throw new Error(`Turntable server responded with status: ${response.status}`);
