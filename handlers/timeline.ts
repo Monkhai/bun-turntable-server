@@ -1,16 +1,14 @@
-import { timelineSchema } from '../type';
 
 const TURNTABLE_SERVER_ADDRESS = 'http://localhost:9000';
 
 export const handleTimeline = async (req: Request): Promise<Response> => {
   try {
     const body = await req.json();
-    const validatedTimeline = timelineSchema.parse(body);
     
     const response = await fetch(`${TURNTABLE_SERVER_ADDRESS}/timeline`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(validatedTimeline)
+      body: JSON.stringify(body)
     });
 
     if (!response.ok) {
