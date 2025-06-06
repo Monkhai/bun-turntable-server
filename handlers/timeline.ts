@@ -8,7 +8,7 @@ export const handleTimeline = async (req: Request): Promise<Response> => {
     console.log('body', body);
     
     const response = await fetch(`${TURNTABLE_SERVER_ADDRESS}/api/TurntableTimeline`, {
-      method: 'POST',
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     });
